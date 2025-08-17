@@ -1,24 +1,24 @@
-// Filter attractions by state
-function filterState(state) {
-    // Hide all state sections first
-    document.querySelectorAll('.state-section').forEach(section => {
-        section.style.display = 'none';
-    });
+// Simple filter functionality
+document.getElementById('search-btn').addEventListener('click', function() {
+    const state = document.getElementById('state-select').value.toLowerCase();
+    const type = document.getElementById('type-select').value.toLowerCase();
+    const attractions = document.querySelectorAll('.attraction-card');
     
-    // Show selected state
-    if(state) {
-        const stateSection = document.getElementById(state);
-        if(stateSection) {
-            stateSection.style.display = 'block';
-            stateSection.scrollIntoView({behavior: 'smooth'});
+    attractions.forEach(card => {
+        const cardState = card.getAttribute('data-state');
+        const cardType = card.getAttribute('data-type');
+        
+        const stateMatch = state === '' || cardState === state;
+        const typeMatch = type === '' || cardType === type;
+        
+        if (stateMatch && typeMatch) {
+            card.style.display = 'block';
+            card.classList.add('fade-in');
+        } else {
+            card.style.display = 'none';
         }
-    } else {
-        // Show all if no state selected
-        document.querySelectorAll('.state-section').forEach(section => {
-            section.style.display = 'block';
-        });
-    }
-}
+    });
+});
 
 // Animation on scroll
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,4 +39,4 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         fadeInObserver.observe(el);
     });
-});
+}); 
