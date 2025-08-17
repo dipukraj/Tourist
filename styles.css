@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Hind:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Hind', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+.attraction-card {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.attraction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.attraction-image {
+    transition: transform 0.5s ease;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.attraction-card:hover .attraction-image {
+    transform: scale(1.05);
+}
+
+.type-badge {
+    transition: all 0.2s ease;
+}
+
+.attraction-card:hover .type-badge {
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.state-header {
+    background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 100%);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.hindi-font {
+    font-family: 'Hind', sans-serif;
+}

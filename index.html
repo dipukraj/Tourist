@@ -1,0 +1,315 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Incredible India - Tourism Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        .attraction-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .attraction-image {
+            transition: transform 0.5s ease;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .attraction-card:hover .attraction-image {
+            transform: scale(1.05);
+        }
+        
+        .type-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .attraction-card:hover .type-badge {
+            transform: scale(1.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-image {
+            transition: all 0.3s ease;
+            filter: grayscale(30%);
+        }
+        
+        .map-image:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-3xl md:text-4xl font-bold">Explore Incredible India</h1>
+                    <p class="text-indigo-200 mt-1">Discover the treasures of every state</p>
+                </div>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d39a3630-0b9b-48fa-b8e3-09ee55060d5f.png" 
+                     alt="Colorful illustrated map of India showing states and major landmarks" 
+                     class="map-image rounded-lg border-2 border-white shadow-md h-40">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Search and Filter -->
+        <section class="mb-12 bg-white p-6 rounded-lg shadow-md fade-in">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Find Your Next Adventure</h2>
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <label for="state-select" class="block text-sm font-medium text-gray-700 mb-1">Select State</label>
+                    <select id="state-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                        <option value="">All States</option>
+                        <option value="rajasthan">Rajasthan</option>
+                        <option value="kerala">Kerala</option>
+                        <option value="himachal">Himachal Pradesh</option>
+                        <option value="uttarakhand">Uttarakhand</option>
+                        <option value="tamil-nadu">Tamil Nadu</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label for="type-select" class="block text-sm font-medium text-gray-700 mb-1">Attraction Type</label>
+                    <select id="type-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                        <option value="">All Types</option>
+                        <option value="temple">Temples</option>
+                        <option value="dam">Dams</option>
+                        <option value="lake">Lakes</option>
+                        <option value="mountain">Mountains</option>
+                        <option value="river">Rivers</option>
+                        <option value="waterfall">Waterfalls</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="search-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition duration-300 w-full md:w-auto">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attractions Grid -->
+        <section id="attractions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Rajasthan Attractions -->
+            <div class="attraction-card bg-white rounded-lg overflow-hidden shadow-md fade-in" data-state="rajasthan" data-type="temple">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1e5ddb1-2145-45f4-b409-0b66a4f09dda.png" 
+                         alt="Majestic Mehrangarh Fort in Jodhpur, Rajasthan with blue houses in foreground" 
+                         class="w-full attraction-image">
+                    <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold type-badge">
+                        Fort
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mehrangarh Fort</h3>
+                    <p class="text-gray-600 text-sm mb-2"><span class="font-medium">District:</span> Jodhpur, Rajasthan</p>
+                    <p class="text-gray-700 mb-4">One of the largest forts in India, towering 410 feet above the city with magnificent architecture and panoramic views.</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                        Explore More →
+                    </button>
+                </div>
+            </div>
+
+            <div class="attraction-card bg-white rounded-lg overflow-hidden shadow-md fade-in" data-state="rajasthan" data-type="lake">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0d40c5d6-201c-4b5e-8a09-9e7dfc355e59.png" 
+                         alt="Serene Pichola Lake in Udaipur with Lake Palace floating on its waters during sunset" 
+                         class="w-full attraction-image">
+                    <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold type-badge">
+                        Lake
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Pichola Lake</h3>
+                    <p class="text-gray-600 text-sm mb-2"><span class="font-medium">District:</span> Udaipur, Rajasthan</p>
+                    <p class="text-gray-700 mb-4">Famous artificial freshwater lake with the stunning Lake Palace at its center, best experienced during sunset boat rides.</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                        Explore More →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kerala Attractions -->
+            <div class="attraction-card bg-white rounded-lg overflow-hidden shadow-md fade-in" data-state="kerala" data-type="backwater">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b85d1c25-e0de-495f-a7b6-d03af24ed1dd.png" 
+                         alt="Traditional houseboat cruising through the lush green backwaters of Alleppey, Kerala" 
+                         class="w-full attraction-image">
+                    <div class="absolute top-4 right-4 bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-semibold type-badge">
+                        Backwaters
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Alleppey Backwaters</h3>
+                    <p class="text-gray-600 text-sm mb-2"><span class="font-medium">District:</span> Alappuzha, Kerala</p>
+                    <p class="text-gray-700 mb-4">A network of brackish lagoons and lakes lying parallel to the Arabian Sea with unique houseboat experiences.</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                        Explore More →
+                    </button>
+                </div>
+            </div>
+
+            <div class="attraction-card bg-white rounded-lg overflow-hidden shadow-md fade-in" data-state="kerala" data-type="waterfall">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8b4128a3-9e80-480e-b9fc-d82e641d921e.png" 
+                         alt="Majestic Athirappilly Waterfalls cascading down rocky cliffs surrounded by lush rainforest in Kerala" 
+                         class="w-full attraction-image">
+                    <div class="absolute top-4 right-4 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-semibold type-badge">
+                        Waterfall
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Athirappilly Falls</h3>
+                    <p class="text-gray-600 text-sm mb-2"><span class="font-medium">District:</span> Thrissur, Kerala</p>
+                    <p class="text-gray-700 mb-4">Often called the 'Niagara of India', this 80-foot waterfall is the largest in Kerala, surrounded by lush green forests.</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                        Explore More →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Himachal Pradesh Attractions -->
+            <div class="attraction-card bg-white rounded-lg overflow-hidden shadow-md fade-in" data-state="himachal" data-type="mountain">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a2e0a490-8d37-4c8d-b56e-c342a07cd81c.png" 
+                         alt="Snow-covered Rohtang Pass highway winding through the Himalayan mountains with stunning views" 
+                         class="w-full attraction-image">
+                    <div class="absolute top-4 right-4 bg-slate-500 text-white px-3 py-1 rounded-full text-sm font-semibold type-badge">
+                        Mountain Pass
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Rohtang Pass</h3>
+                    <p class="text-gray-600 text-sm mb-2"><span class="font-medium">District:</span> Kullu, Himachal Pradesh</p>
+                    <p class="text-gray-700 mb-4">High mountain pass at 3,978m connecting Kullu Valley with Lahaul and Spiti, offering breathtaking Himalayan vistas.</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                        Explore More →
+                    </button>
+                </div>
+            </div>
+
+            <div class="attraction-card bg-white rounded-lg overflow-hidden shadow-md fade-in" data-state="himachal" data-type="temple">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/76894ef8-185c-4dde-a321-46f62c5885a8.png" 
+                         alt="Ancient wooden Hidimba Devi Temple in Manali with intricate carvings and pagoda-style roof" 
+                         class="w-full attraction-image">
+                    <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold type-badge">
+                        Temple
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Hidimba Devi Temple</h3>
+                    <p class="text-gray-600 text-sm mb-2"><span class="font-medium">District:</span> Kullu, Himachal Pradesh</p>
+                    <p class="text-gray-700 mb-4">Ancient cave temple dedicated to Hidimbi Devi, built in 1553 with unique Himalayan architecture amid cedar forests.</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                        Explore More →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-8 md:p-12 text-center mb-12 fade-in">
+            <h2 class="text-3xl font-bold mb-4">Ready to Explore More of India?</h2>
+            <p class="text-lg opacity-90 mb-6 max-w-2xl mx-auto">Discover hidden gems, spiritual centers, natural wonders, and cultural treasures across all 28 states and 8 union territories.</p>
+            <button class="bg-white text-indigo-600 hover:bg-gray-100 font-bold px-8 py-3 rounded-lg shadow-lg transition duration-300">
+                View Complete State Guide
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">Explore Incredible India</h3>
+                    <p class="text-gray-400 mt-1">Your Guide to India's Treasures</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">About</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">States</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-6 pt-6 text-center text-gray-500 text-sm">
+                © 2023 Incredible India Tourism. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple filter functionality
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const state = document.getElementById('state-select').value.toLowerCase();
+            const type = document.getElementById('type-select').value.toLowerCase();
+            const attractions = document.querySelectorAll('.attraction-card');
+            
+            attractions.forEach(card => {
+                const cardState = card.getAttribute('data-state');
+                const cardType = card.getAttribute('data-type');
+                
+                const stateMatch = state === '' || cardState === state;
+                const typeMatch = type === '' || cardType === type;
+                
+                if (stateMatch && typeMatch) {
+                    card.style.display = 'block';
+                    card.classList.add('fade-in');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                fadeInObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
+
